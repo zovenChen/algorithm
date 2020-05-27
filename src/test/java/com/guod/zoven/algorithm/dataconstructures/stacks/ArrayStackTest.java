@@ -1,17 +1,13 @@
 package com.guod.zoven.algorithm.dataconstructures.stacks;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class ArrayStackTest {
 
-    ArrayStack arrayStack;
-
     @Test
     void arrayStackTest() {
         // Declare a stack of maximum size 4
-        ArrayStack arrayStack = new ArrayStack(4);
+        ArrayStack arrayStack = new ArrayStack(Integer.TYPE, 4);
 
         // Populate the stack
         arrayStack.push(5);
@@ -25,6 +21,10 @@ class ArrayStackTest {
         System.out.println(arrayStack.peek()); // will print 9
         System.out.println(arrayStack.pop()); // will print 9
         System.out.println(arrayStack.peek()); // will print 2
+
+        arrayStack.push(9);
+        arrayStack.push(2);
+
     }
 
 }
