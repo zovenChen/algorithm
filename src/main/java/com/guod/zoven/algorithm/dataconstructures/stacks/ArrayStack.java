@@ -1,7 +1,6 @@
 package com.guod.zoven.algorithm.dataconstructures.stacks;
 
 import java.lang.reflect.Array;
-import java.lang.reflect.ParameterizedType;
 
 /**
  * 顺序栈
