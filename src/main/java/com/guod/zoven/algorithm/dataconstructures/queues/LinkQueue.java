@@ -1,6 +1,11 @@
 package com.guod.zoven.algorithm.dataconstructures.queues;
 
+/**
+ * @classname LinkQueue
+ * @author zoven
+ */
 public class LinkQueue<T> implements Queue<T> {
+
     public class Node<T> {
         public Node(T data) {
             this.data = data;
@@ -15,13 +20,8 @@ public class LinkQueue<T> implements Queue<T> {
     private int size;
     private Class<T> entityClass;
 
-    public int getSize() {
-        return size;
-    }
-
     public LinkQueue() {
-        front = new Node<T>(null);
-        rear = front;
+
     }
 
     /**
@@ -30,8 +30,13 @@ public class LinkQueue<T> implements Queue<T> {
      * @param data
      */
     public void enqueue(T data) {
-        rear.next = new Node<T>(data);
-        rear = rear.next;
+        if (front == null) {
+            front = new Node<T>(data);
+            rear = front;
+        } else {
+            rear.next = new Node<T>(data);
+            rear = rear.next;
+        }
         size++;
     }
 
@@ -39,11 +44,21 @@ public class LinkQueue<T> implements Queue<T> {
      * 出队
      */
     public T dequeue() {
+        if (front == null) {
+            return null;
+        }
         Node<T> oldFront = front;
         front = front.next;
         size--;
 
         oldFront.next = null;
         return oldFront.data;
+    }
+
+    /**
+     * 队列长度
+     */
+    public int size() {
+        return size;
     }
 }

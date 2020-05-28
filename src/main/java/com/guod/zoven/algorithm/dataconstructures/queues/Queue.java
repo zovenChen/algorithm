@@ -10,4 +10,9 @@ public interface Queue<T> {
      * 出队
      */
     T dequeue();
+
+    /**
+     * 队列长度
+     */
+    int size();
 }

@@ -30,4 +30,11 @@ public class ArrayQueue<T> implements Queue<T> {
     public T dequeue() {
         return null;
     }
+
+    /**
+     * 队列长度
+     */
+    public int size() {
+        return 0;
+    }
 }
