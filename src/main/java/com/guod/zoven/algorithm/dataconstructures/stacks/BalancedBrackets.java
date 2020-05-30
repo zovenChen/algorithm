@@ -1,7 +1,5 @@
 package com.guod.zoven.algorithm.dataconstructures.stacks;
 
-import com.sun.istack.internal.NotNull;
-
 public class BalancedBrackets {
 
     private final static char[][] pairBrackets;
@@ -17,7 +15,7 @@ public class BalancedBrackets {
 
     private BalancedBrackets() {}
 
-    private static boolean isPair(@NotNull Character leftBracket, @NotNull Character rightBracket) {
+    private static boolean isPair(Character leftBracket, Character rightBracket) {
         for (char[] pairBracket : pairBrackets) {
             if (pairBracket[0] == leftBracket && pairBracket[1] == rightBracket) {
                 return true;

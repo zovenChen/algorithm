@@ -15,8 +15,14 @@ public class LinkQueue<T> implements Queue<T> {
         Node<T> next;
     }
 
-    private Node<T> front;
-    private Node<T> rear;
+    /**
+     * 队头
+     */
+    private Node<T> head;
+    /**
+     * 队尾
+     */
+    private Node<T> tail;
     private int size;
     private Class<T> entityClass;
 
@@ -29,13 +35,14 @@ public class LinkQueue<T> implements Queue<T> {
      *
      * @param data
      */
+    @Override
     public void enqueue(T data) {
-        if (front == null) {
-            front = new Node<T>(data);
-            rear = front;
+        if (head == null) {
+            head = new Node<T>(data);
+            tail = head;
         } else {
-            rear.next = new Node<T>(data);
-            rear = rear.next;
+            tail.next = new Node<T>(data);
+            tail = tail.next;
         }
         size++;
     }
@@ -43,12 +50,13 @@ public class LinkQueue<T> implements Queue<T> {
     /**
      * 出队
      */
+    @Override
     public T dequeue() {
-        if (front == null) {
+        if (head == null) {
             return null;
         }
-        Node<T> oldFront = front;
-        front = front.next;
+        Node<T> oldFront = head;
+        head = head.next;
         size--;
 
         oldFront.next = null;
@@ -58,6 +66,7 @@ public class LinkQueue<T> implements Queue<T> {
     /**
      * 队列长度
      */
+    @Override
     public int size() {
         return size;
     }

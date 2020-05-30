@@ -18,15 +18,16 @@ public class ArrayStack<T> implements Stack<T> {
         this(type, DEFAULT_CAPACITY);
     }
 
-    public ArrayStack(Class<T> type,int size) {
+    public ArrayStack(Class<T> type,int capacity) {
         this.entityClass = type;
-        this.data = (T[]) Array.newInstance(type,size);
+        this.data = (T[]) Array.newInstance(type,capacity);
     }
 
     /**
      * 入栈
      *
      */
+    @Override
     public void push(T info) {
         if (this.length >= this.data.length) {
             // 扩容
@@ -39,6 +40,7 @@ public class ArrayStack<T> implements Stack<T> {
     /**
      * 出栈
      */
+    @Override
     public T pop() {
         if(isEmpty()) {
             return null;
@@ -53,6 +55,7 @@ public class ArrayStack<T> implements Stack<T> {
     /**
      *
      */
+    @Override
     public T peek() {
         if(isEmpty()) {
             return null;
@@ -61,6 +64,7 @@ public class ArrayStack<T> implements Stack<T> {
         return this.data[length - 1];
     }
 
+    @Override
     public boolean isEmpty() {
         return 0 == length;
     }
