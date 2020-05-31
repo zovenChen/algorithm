@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 /**
  * @Classname CircularQueueTest
@@ -28,7 +29,7 @@ class CircularQueueTest {
         assertEquals(8, queue.size());
 
         IntStream.range(2, 8).forEach(i -> System.out.println(queue.dequeue()));
-        assertEquals(5, queue.size());
+        assertEquals(2, queue.size());
 
         while (queue.size() > 0) {
             System.out.println(queue.dequeue());
