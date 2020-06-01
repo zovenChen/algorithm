@@ -11,7 +11,6 @@ import java.lang.reflect.Array;
 public class CircularQueue<T> implements Queue<T> {
     private Class<T> entityClass;
     private T[] data;
-    private int size;
 
     /**
      * 队头下标
@@ -28,13 +27,13 @@ public class CircularQueue<T> implements Queue<T> {
 
     public CircularQueue(Class<T> type, int capacity) {
         entityClass = type;
-        data = (T[]) Array.newInstance(type, capacity);
+        data = (T[]) Array.newInstance(type, capacity + 1);
     }
 
     /**
      * 入队
      *
-     * @param data
+     * tail 指向为null元素(即队满时，留一空元素)，原因为更好判断队满
      */
     @Override
     public void enqueue(T data) {
@@ -42,9 +41,10 @@ public class CircularQueue<T> implements Queue<T> {
         int next = (tail + 1) % this.data.length;
         if (next == head) {
             System.out.println("队列已满，拒绝入队");
+            return;
         }
 
-        this.data[next] = data;
+        this.data[tail] = data;
         tail = next;
     }
 
@@ -58,6 +58,7 @@ public class CircularQueue<T> implements Queue<T> {
             return null;
         }
         T data = this.data[head];
+        this.data[head] = null;
         head = next;
         return data;
     }
@@ -68,7 +69,7 @@ public class CircularQueue<T> implements Queue<T> {
     @Override
     public int size() {
         if (tail < head) {
-            return tail + this.data.length - head + 1;
+            return tail + this.data.length - head;
         }
         return tail - head;
     }
