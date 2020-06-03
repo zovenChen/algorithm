@@ -44,4 +44,9 @@ class SortTest {
     void testSelectionSort() {
         System.out.println(StringUtils.join(new SelectionSort().sort(data), " "));
     }
+
+    @Test
+    void testQuickSort() {
+        System.out.println(StringUtils.join(new QuickSort().sort(data), " "));
+    }
 }
